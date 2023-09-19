@@ -1,0 +1,54 @@
+.appointmentBox {
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px 0.1px #0194e9;
+  margin: 20px;
+  padding: 10px 20px;
+  color: black;
+  cursor: pointer;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.name {
+}
+.time {
+  font-size: 35px;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.desc {
+  width: 100%;
+}
+.status {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.skipped {
+  background-color: #c4c4c4;
+}
+.upcoming {
+  background-color: white;
+}
+.finishContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 68.4px;
+}
+.finish {
+  padding: 5px;
+  border: 1px solid #0194e9;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

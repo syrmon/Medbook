@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100vh;
+  background-color: #fbf9f9ff;
+}
+
+.dashboardContainer {
+  flex: 1;
+}
+
+.appointmentContainer {
+  flex: 11;
+}

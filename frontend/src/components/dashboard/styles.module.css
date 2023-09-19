@@ -1,0 +1,228 @@
+/*
+.container {
+  height: 100vh;
+  background-color: #0194e9;
+  display: flex;
+  flex-direction: column;
+}
+.profileContainer {
+  flex: 2;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.linksContainer {
+  flex: 7;
+  border-top: 1px solid white;
+  margin: 0px 20px;
+}
+
+.appointmentsContainer {
+  padding: 15px;
+  margin-top: 20px;
+  padding-left: 70px;
+  font-size: 20px;
+  display: flex;
+  background-color: #0278bc;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.insertContainer {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid white;
+  margin: 0px 20px;
+}
+.insertAppointment {
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  border: none;
+  box-shadow: 0xp 0px 2px 10px black;
+  cursor: pointer;
+  background-color: white;
+  font-size: 14px;
+}
+.insertAppointment:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+.firmContainer {
+  flex: 1;
+  border-top: 1px solid white;
+  margin: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilePhoto {
+  border-radius: 100%;
+  border: 1px solid white;
+  width: 70px;
+  height: 70px;
+}
+.drInfo {
+}
+.drName {
+  font-size: 20px;
+  text-align: center;
+}
+.officeName {
+  font-size: 12px;
+  text-align: center;
+}*/
+
+/* Mobile Responsive*/
+.container {
+  background-color: #0194e9;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.serviceContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.serviceContainer1 {
+  width: 100px;
+}
+
+.addContainer {
+  position: absolute;
+  bottom: -30px;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 1px #0194e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addButtons {
+  z-index: 99;
+  position: absolute;
+  bottom: 65px;
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  justify-content: space-around;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+
+.addCustomer {
+  box-shadow: 0px 0px 5px 1px #0194e9;
+  border-radius: 15px;
+  height: 30px;
+  width: 135px;
+  display: flex;
+  backdrop-filter: blur(9px);
+  padding-left: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.addAppointment {
+  box-shadow: 0px 0px 5px 1px #0194e9;
+  border-radius: 15px;
+  padding-left: 15px;
+  height: 30px;
+  width: 135px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.addReceipe {
+  box-shadow: 0px 0px 5px 1px #0194e9;
+  border-radius: 15px;
+  padding-left: 15px;
+  height: 30px;
+  width: 135px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #035787;
+}
+
+/* Animations*/
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+.fadeOutDown {
+  -webkit-animation-name: fadeOutDown;
+  animation-name: fadeOutDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+@keyframes fadeOutDown {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}

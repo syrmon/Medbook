@@ -1,0 +1,105 @@
+import Customer from "../models/Customer.js";
+
+export const getCustomers = async (req, res) => {
+  try {
+    const customer = await Customer.find();
+    res.status(200).json(customer);
+    return customer;
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getAppointments = async (req, res) => {
+  try {
+    const customer = await Customer.find();
+    const date = new Date();
+    const month = (date.getMonth() + 1).toString();
+
+    const todaysDate = date
+      .getDate()
+      .toString()
+      .concat("." + month.length > 1 ? month : "0" + month + ".")
+      .concat(date.getFullYear().toString());
+
+    const appointments = customer.map((c) => {
+      const appointment = c.appointments.filter((a) => {
+        return a.date === todaysDate;
+      });
+
+      return (
+        appointment.length > 0 && {
+          contactNumber: c.contactNumber,
+          name: c.name,
+          surname: c.surname,
+          appointment: appointment,
+        }
+      );
+    });
+
+    res.status(200).json(appointments);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const updateAppointment = async (req, res) => {
+  
+  const customer = await Customer.findOneAndUpdate(
+    {
+      contactNumber: req.body.contactNumber,
+    },
+    { $set: { status: "Bitdi" } },
+    { new: true }
+    );
+    
+  customer
+    .save()
+    .then(() =>
+      res.status(200).json({ message: "Succesfully added", data: customer })
+    )
+    .catch((e) => res.status(404).json({ message: e.message }));
+};
+
+export const setCustomer = async (req, res) => {
+  const customer = new Customer({
+    appointments: [],
+    name: req.body.name,
+    surname: req.body.surname,
+    birthDate: req.body.birthDate,
+    contactNumber: req.body.contactNumber,
+  });
+
+  customer
+    .save()
+    .then(() =>
+      res.status(200).json({ message: "Succesfully added", data: customer })
+    )
+    .catch((e) => res.status(404).json({ message: e.message }));
+};
+
+export const setAppointment = async (req, res) => {
+  const newAppointment = {
+    time: req.body.time,
+    date: req.body.date,
+    desc: req.body.desc,
+    status: "Gelir",
+  };
+
+  req.body.customer.appointments.push(newAppointment);
+
+  const customer = await Customer.findOneAndUpdate(
+    {
+      contactNumber: req.body.customer.contactNumber,
+    },
+    { $set: { appointments: req.body.customer.appointments } },
+    { new: true }
+  );
+
+  customer
+    .save()
+    .then(() =>
+      res.status(200).json({ message: "Succesfully added", data: customer })
+    )
+    .catch((e) => res.status(404).json({ message: e.message }));
+};

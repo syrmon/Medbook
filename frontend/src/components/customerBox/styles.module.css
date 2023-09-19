@@ -1,0 +1,38 @@
+.container {
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px 0.1px #0194e9;
+  margin: 20px;
+  padding: 10px 20px;
+  color: black;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.name {
+}
+.time {
+  font-size: 16px;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.desc {
+}
+.status {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.skipped {
+  background-color: #c4c4c4;
+}
+.upcoming {
+  background-color: white;
+}
