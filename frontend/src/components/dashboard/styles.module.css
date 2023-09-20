@@ -97,6 +97,12 @@
   width: 100px;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .addContainer {
+    bottom: 30px;
+  }
+}
+
 .addContainer {
   position: absolute;
   bottom: -30px;
