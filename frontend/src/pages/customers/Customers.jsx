@@ -9,9 +9,9 @@ const Customers = () => {
 
   return (
     <div className={`${styles.container}`}>
-      <div className={`${styles.dashboardContainer}`}>
-        <Dashboard />
-      </div>
+      {/* <div className={`${styles.dashboardContainer}`}>
+      </div> */}
+      <Banner />
       <div className={`${styles.appointmentContainer}`}>
         {data !== undefined
           ? data.map((customer) => {
@@ -23,7 +23,7 @@ const Customers = () => {
             })
           : isLoading && <div> is Loading </div>}
       </div>
-      <Banner />
+      <Dashboard />
     </div>
   );
 };

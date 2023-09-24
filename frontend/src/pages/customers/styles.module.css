@@ -1,21 +1,21 @@
 .container {
-    display: flex;
-    flex-direction: column-reverse;
-    height: 100vh;
-    background-color: #fbf9f9ff;
+  display: flex;
+  height: 100vh;
+  background-color: #fbf9f9ff;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .container {
+    height: 86vh !important;
   }
-  
-  @supports (-webkit-touch-callout: none) {
-    .container{
-      height: 86vh!important;
-    }
-  }
-  .dashboardContainer {
-    flex: 1;
-  }
-  
-  .appointmentContainer {
-    flex: 11;
-    overflow: scroll;
-  }
-  
+}
+.dashboardContainer {
+  flex: 1;
+}
+
+.appointmentContainer {
+  flex: 11;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  overflow: scroll;
+}
