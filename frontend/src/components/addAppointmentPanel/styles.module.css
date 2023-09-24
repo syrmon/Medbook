@@ -11,6 +11,12 @@
   margin: 0px 20px;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .container{
+    height: 65vh;
+  }
+}
+
 .closeContainer {
   margin: 20px 0px 0px;
   display: flex;
