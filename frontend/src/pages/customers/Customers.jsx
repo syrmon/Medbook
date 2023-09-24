@@ -6,13 +6,14 @@ import Banner from "components/banner/Banner";
 
 const Customers = () => {
   const { data, isLoading } = useGetCustomersQuery();
-
   return (
     <div className={`${styles.container}`}>
-      {/* <div className={`${styles.dashboardContainer}`}>
-      </div> */}
       <Banner />
       <div className={`${styles.appointmentContainer}`}>
+        <div className={`${styles.statisticsContainer}`}>
+          <h3>Müştəri sayı: </h3>{" "}
+          <h3>{data !== undefined ? data.length : 0}</h3>
+        </div>
         {data !== undefined
           ? data.map((customer) => {
               return (
@@ -21,7 +22,7 @@ const Customers = () => {
                 )
               );
             })
-          : isLoading && <div> is Loading </div>}
+          : isLoading && ""}
       </div>
       <Dashboard />
     </div>

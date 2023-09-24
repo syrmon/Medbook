@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.css";
 import AppointmentBox from "components/appointmentBox/AppointmentBox";
 import { useGetAppointmentsQuery } from "state/api";
@@ -9,10 +9,22 @@ const Appointments = () => {
   const { data, isLoading } = useGetAppointmentsQuery();
   const myData = [];
 
+  const appointmentCountIncreaser = () => {
+    let appointmentCount = 0;
+
+    for (let i = 0; i < myData.length; i++) {
+      if (myData[i] !== false) {
+        appointmentCount++;
+      }
+    }
+
+    return appointmentCount;
+  };
+
   const updateArray = () => {
     for (let i = 0; i < data.length; i++) {
       data.map((a) => {
-        myData.length !== data.length && myData.push(a);
+        return myData.length !== data.length && myData.push(a);
       });
     }
     sortData();
@@ -56,6 +68,9 @@ const Appointments = () => {
         <Dashboard />
       </div>
       <div className={`${styles.appointmentContainer}`}>
+        <div className={`${styles.statisticsContainer}`}>
+          <h3>Randevu sayı: </h3> <h3>{appointmentCountIncreaser()}</h3>
+        </div>
         {myData.length > 0
           ? myData.map((appointment) => {
               return (
@@ -68,7 +83,7 @@ const Appointments = () => {
                 )
               );
             })
-          : isLoading && <div> is Loading </div>}
+          : isLoading && ""}
       </div>
       <Banner />
     </div>

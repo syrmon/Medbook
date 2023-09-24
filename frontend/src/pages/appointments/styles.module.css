@@ -10,6 +10,15 @@
   }
 }
 
+.statisticsContainer {
+  color: #000;
+  margin-top: 60px;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
 .dashboardContainer {
   flex: 1;
 }

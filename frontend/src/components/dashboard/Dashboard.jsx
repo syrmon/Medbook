@@ -5,7 +5,6 @@ import {
   People,
   Person,
   Receipt,
-  Search,
 } from "@mui/icons-material";
 import styles from "./styles.module.css";
 import { useState } from "react";

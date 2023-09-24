@@ -4,6 +4,15 @@
   background-color: #fbf9f9ff;
 }
 
+.statisticsContainer {
+  color: #000;
+  margin-top: 60px;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
 @supports (-webkit-touch-callout: none) {
   .container {
     height: 86vh !important;
@@ -15,7 +24,6 @@
 
 .appointmentContainer {
   flex: 11;
-  margin-top: 50px;
   padding-bottom: 50px;
   overflow: scroll;
 }
