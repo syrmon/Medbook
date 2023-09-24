@@ -114,53 +114,31 @@
   align-items: center;
 }
 
-.addButtons {
+.addButtonGroup {
   z-index: 99;
   position: absolute;
   bottom: 95px;
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 180px;
   justify-content: space-around;
   border-radius: 10px;
   padding: 0px 10px;
 }
 
-.addCustomer {
+.addButtons {
   box-shadow: 0px 0px 5px 1px #0194e9;
-  border-radius: 15px;
-  height: 30px;
-  width: 135px;
-  display: flex;
-  backdrop-filter: blur(9px);
-  padding-left: 15px;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: pointer;
-}
-
-.addAppointment {
-  box-shadow: 0px 0px 5px 1px #0194e9;
+  font-size: 16px;
   border-radius: 15px;
   padding-left: 15px;
-  height: 30px;
+  height: 40px;
   width: 135px;
+  background-color: #0194e9;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
-}
-
-.addReceipe {
-  box-shadow: 0px 0px 5px 1px #0194e9;
-  border-radius: 15px;
-  padding-left: 15px;
-  height: 30px;
-  width: 135px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: pointer;
+  color: #fff;
 }
 
 .active {

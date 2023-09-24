@@ -91,22 +91,22 @@ const Dashboard = () => {
         </div>
         {addNewData === true && (
           <div
-            className={`${styles.addButtons}  ${
+            className={`${styles.addButtonGroup}  ${
               addNewData === true ? styles.fadeInUp : styles.fadeOutDown
             }`}
           >
             <div
-              className={`${styles.addCustomer}`}
+              className={`${styles.addButtons}`}
               onClick={() => setCustomerActive(true)}
             >
               <Person
                 sx={{ fontSize: 20 }}
-                style={{ color: "#0194e9", marginRight: "15px" }}
+                style={{ color: "#fff", marginRight: "15px" }}
               />
               <h4>Müştəri</h4>
             </div>
             <div
-              className={`${styles.addAppointment} `}
+              className={`${styles.addButtons} `}
               onClick={() => {
                 updateEventActive(true);
                 setAddNewData(false);
@@ -114,14 +114,14 @@ const Dashboard = () => {
             >
               <Event
                 sx={{ fontSize: 20 }}
-                style={{ color: "#0194e9", marginRight: "15px" }}
+                style={{ color: "#fff", marginRight: "15px" }}
               />
               <h4>Randevu</h4>
             </div>
-            <div className={`${styles.addReceipe}`}>
+            <div className={`${styles.addButtons}`}>
               <Receipt
                 sx={{ fontSize: 20 }}
-                style={{ color: "#0194e9", marginRight: "15px" }}
+                style={{ color: "#fff", marginRight: "15px" }}
               />
               <h4>Qəbz</h4>
             </div>
