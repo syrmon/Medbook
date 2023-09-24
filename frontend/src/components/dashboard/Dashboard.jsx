@@ -12,36 +12,6 @@ import { useNavigate } from "react-router-dom";
 import AddAppointmentPanel from "components/addAppointmentPanel/AddAppointmentPanel";
 import AddCustomerPanel from "components/addCustomerPanel/AddCustomerPanel";
 
-/*
-    <div className={`${styles.container}`}>
-      <div className={`${styles.profileContainer}`}>
-        <div className={`${styles.profilePhoto}`}></div>
-
-        <div className={`${styles.drInfo}`}>
-          <h4 className={`${styles.drName}`}>Fikret Rehimov</h4>
-          <h4 className={`${styles.officeName}`}>Dental Clinic az</h4>
-        </div>
-      </div>
-      <div className={`${styles.linksContainer}`}>
-        <div className={`${styles.appointmentsContainer}`}>
-          <Event
-            sx={{ fontSize: 30 }}
-            style={{ paddingRight: "35px", color: "white" }}
-          />
-          <h3>Randevular</h3>
-        </div>
-      </div>
-      <div className={`${styles.insertContainer}`}>
-        <button className={`${styles.insertAppointment}`}>
-          <AddTask sx={{ fontSize: 30 }} style={{ paddingRight: "15px" }} />
-          Randevu əlavə et
-        </button>
-      </div>
-      <div className={`${styles.firmContainer}`}>
-        <h5>Medbook</h5>
-      </div>
-    </div>*/
-
 const Dashboard = () => {
   const [addNewData, setAddNewData] = useState(false);
   const [eventActive, setEventActive] = useState(false);
