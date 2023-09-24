@@ -99,8 +99,12 @@
 
 @supports (-webkit-touch-callout: none) {
   .addContainer {
-    bottom: 30px;
+    bottom: 15px!important;
   }
+  .addButtons{
+    bottom: 95px!important;
+  }
+  
 }
 
 .addContainer {

@@ -5,11 +5,17 @@
     background-color: #fbf9f9ff;
   }
   
+  @supports (-webkit-touch-callout: none) {
+    .container{
+      height: 86vh!important;
+    }
+  }
   .dashboardContainer {
     flex: 1;
   }
   
   .appointmentContainer {
     flex: 11;
+    overflow: scroll;
   }
   
