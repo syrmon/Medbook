@@ -89,6 +89,7 @@ const Appointments = () => {
               <DatePicker
                 variant="standard"
                 format="DD-MM-YYYY"
+                slotProps={{ textField: { placeholder: todaysDate } }}
                 onChange={(date) => {
                   const selectedDate = date.$D
                     .toString()
