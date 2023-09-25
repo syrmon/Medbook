@@ -53,14 +53,6 @@ export const updateAppointment = async (req, res) => {
 
   await customer.save();
   customer = await Customer.findOne(filter);
-  console.log(customer.appointments);
-
-  // customer
-  //   .save()
-  //   .then(() =>
-  //     res.status(200).json({ message: "Succesfully added", data: customer })
-  //   )
-  //   .catch((e) => res.status(404).json({ message: e.message }));
 };
 
 export const setCustomer = async (req, res) => {
