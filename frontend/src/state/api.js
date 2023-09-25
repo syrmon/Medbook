@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "https://asdfghjklmnbvcxz.vercel.app/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_SERVER_URL }),
   reducerPath: "adminApi",
   tagTypes: ["User", "Appointments", "Customers", "Recipes"],
   endpoints: (build) => ({
