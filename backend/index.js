@@ -6,6 +6,10 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import customerRoutes from "./routes/customer.js";
+import Appointment from "./models/Appointments.js";
+import Customer from "./models/Customer.js";
+// import http from "http";
+
 
 dotenv.config();
 const app = express();
@@ -19,6 +23,10 @@ app._router.use(cors());
 
 app.use("/customer", customerRoutes);
 
+// const httpServer = http.createServer(app);
+
+
+
 /* Mongoose setup */
 const PORT = process.env.PORT || 9000;
 mongoose
@@ -28,5 +36,6 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    //Appointment.insertMany(appointments);
   })
   .catch((error) => console.log(`${error} did not connect`));
