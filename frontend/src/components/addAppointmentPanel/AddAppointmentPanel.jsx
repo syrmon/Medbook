@@ -1,9 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import {
-  useAddAppointmentMutation,
-  useGetCustomersQuery,
-} from "state/api";
+import { useAddAppointmentMutation, useGetCustomersQuery } from "state/api";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -41,14 +38,16 @@ const AddAppointmentPanel = (props) => {
         ? customerTime.$H.toString()
         : "0" + customerTime.$H.toString()
     ).concat(
-      ":" + (customerTime.$m.toString().length > 1
-        ? customerTime.$m.toString()
-        : "0" + customerTime.$m.toString())
+      ":" +
+        (customerTime.$m.toString().length > 1
+          ? customerTime.$m.toString()
+          : "0" + customerTime.$m.toString())
     );
 
     const selectedDate = date.$D
       .toString()
-      .concat("." + month.length > 1 ? month : "0" + month + ".")
+      .concat(".")
+      .concat(month.length > 1 ? month : "0" + month + ".")
       .concat(date.$y.toString());
 
     addCustomer({

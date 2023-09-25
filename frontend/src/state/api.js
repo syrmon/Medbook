@@ -1,16 +1,23 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: "https://asdfghjklmnbvcxz.vercel.app/" }),
+  // baseQuery: fetchBaseQuery({ baseUrl: "https://asdfghjklmnbvcxz.vercel.app/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5001/" }),
   reducerPath: "adminApi",
   tagTypes: ["User", "Appointments", "Customers", "Recipes"],
   endpoints: (build) => ({
     getAppointments: build.query({
-      query: () => "/customer/appointments/",
+      query: (payload) => {
+        return {
+          url: "/customer/appointments/",
+          params: { date: payload },
+        };
+      },
       providesTags: ["Appointments"],
     }),
     getCustomers: build.query({
       query: () => "/customer/",
+
       providesTags: ["Customers"],
     }),
     addAppointment: build.mutation({

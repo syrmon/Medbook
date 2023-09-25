@@ -12,19 +12,13 @@ export const getCustomers = async (req, res) => {
 
 export const getAppointments = async (req, res) => {
   try {
+    const selectedDate = req.query.date
     const customer = await Customer.find();
-    const date = new Date();
-    const month = (date.getMonth() + 1).toString();
-
-    const todaysDate = date
-      .getDate()
-      .toString()
-      .concat("." + month.length > 1 ? month : "0" + month + ".")
-      .concat(date.getFullYear().toString());
+    
 
     const appointments = customer.map((c) => {
       const appointment = c.appointments.filter((a) => {
-        return a.date === todaysDate;
+        return a.date === selectedDate;
       });
 
       return (
@@ -44,15 +38,14 @@ export const getAppointments = async (req, res) => {
 };
 
 export const updateAppointment = async (req, res) => {
-  
   const customer = await Customer.findOneAndUpdate(
     {
       contactNumber: req.body.contactNumber,
     },
     { $set: { status: "Bitdi" } },
     { new: true }
-    );
-    
+  );
+
   customer
     .save()
     .then(() =>
