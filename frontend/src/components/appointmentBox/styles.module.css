@@ -41,9 +41,10 @@
 }
 .finishContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   height: 68.4px;
+  flex: 3;
 }
 .finish {
   padding: 5px;
@@ -52,4 +53,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.statusUpdaterBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 68.4px;
+  margin-left: 20px;
+  flex: 4;
+}
+
+.changed{
+  box-shadow: 0px 0px 5px 0.1px #ff850b;
+}
+
+.updateButton {
+  padding: 5px;
+  border: 1px solid #0194e9;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.undoContainer {
+  flex: 1;
 }

@@ -1,11 +1,19 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import { Done } from "@mui/icons-material";
+import { Sync, Undo, Done } from "@mui/icons-material";
 import { useUpdateAppointmentMutation } from "state/api";
+import UpdateAppointmentPanel from "components/updateAppointmentPanel/UpdateAppointmentPanel";
 
 const AppointmentBox = (props) => {
   const [isChangeStatus, setIsChangeStatus] = useState(false);
   const [updateAppointment] = useUpdateAppointmentMutation();
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
+  const updateDialogStatus = (status) => {
+    setDialogOpen(status);
+    setIsChangeStatus(false);
+  };
+
   const data = props.data;
   return (
     <>
@@ -14,7 +22,7 @@ const AppointmentBox = (props) => {
           className={`${styles.appointmentBox} ${
             data.appointment[0].status === "Bitdi"
               ? styles.skipped
-              : styles.upcoming
+              :  data.appointment[0].status === "Changed" ? styles.changed : styles.upcoming
           }`}
           onClick={() => {
             setIsChangeStatus(true);
@@ -36,11 +44,14 @@ const AppointmentBox = (props) => {
         </div>
       ) : (
         <div
-          className={`${styles.appointmentBox} ${styles.upcoming}`}
-          onClick={() => {
-            setIsChangeStatus(false);
-          }}
+          className={`${styles.appointmentBox} ${styles.upcoming} ${styles.statusUpdaterBox}`}
         >
+          <div
+            className={`${styles.undoContainer}`}
+            onClick={() => setIsChangeStatus(false)}
+          >
+            <Undo sx={{ fontSize: 25 }} style={{ color: "#0194e9" }} />
+          </div>
           <div className={`${styles.finishContainer}`}>
             <div
               className={`${styles.finish}`}
@@ -50,12 +61,28 @@ const AppointmentBox = (props) => {
                   contactNumber: props.customerNumber,
                   date: data.appointment[0].date,
                 });
-                // window.location.reload(false);
               }}
             >
               <Done sx={{ fontSize: 30 }} style={{ color: "#0194e9" }} />
             </div>
           </div>
+          <div className={`${styles.updateContainer}`}>
+            <div
+              className={`${styles.updateButton}`}
+              onClick={() => {
+                setDialogOpen(true);
+              }}
+            >
+              <Sync sx={{ fontSize: 30 }} style={{ color: "#0194e9" }} />
+            </div>
+          </div>
+
+          {isDialogOpen && (
+            <UpdateAppointmentPanel
+              status={updateDialogStatus}
+              customer={data}
+            />
+          )}
         </div>
       )}
     </>

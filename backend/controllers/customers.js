@@ -43,11 +43,23 @@ export const updateAppointment = async (req, res) => {
 
   let customer = await Customer.findOne(filter);
 
-  customer.appointments.map((c) => {
-    if (c.date === req.body.date) {
-      c.status = "Bitdi";
-    }
-  });
+  if (req.body.newDate === undefined) {
+    customer.appointments.map((c) => {
+      if (c.date === req.body.date) {
+        c.status = "Bitdi";
+      }
+    });
+  }
+
+  if (req.body.newDate !== undefined) {
+    customer.appointments.map((c) => {
+      if (c.date === req.body.date) {
+        c.date = req.body.newDate.date;
+        c.time = req.body.newDate.time;
+        c.status = "Changed";
+      }
+    });
+  }
 
   await Customer.updateOne(filter, { appointments: customer.appointments });
 
