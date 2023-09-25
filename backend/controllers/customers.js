@@ -12,9 +12,8 @@ export const getCustomers = async (req, res) => {
 
 export const getAppointments = async (req, res) => {
   try {
-    const selectedDate = req.query.date
+    const selectedDate = req.query.date;
     const customer = await Customer.find();
-    
 
     const appointments = customer.map((c) => {
       const appointment = c.appointments.filter((a) => {
@@ -38,20 +37,30 @@ export const getAppointments = async (req, res) => {
 };
 
 export const updateAppointment = async (req, res) => {
-  const customer = await Customer.findOneAndUpdate(
-    {
-      contactNumber: req.body.contactNumber,
-    },
-    { $set: { status: "Bitdi" } },
-    { new: true }
-  );
+  const filter = {
+    contactNumber: req.body.contactNumber,
+  };
 
-  customer
-    .save()
-    .then(() =>
-      res.status(200).json({ message: "Succesfully added", data: customer })
-    )
-    .catch((e) => res.status(404).json({ message: e.message }));
+  let customer = await Customer.findOne(filter);
+
+  customer.appointments.map((c) => {
+    if (c.date === req.body.date) {
+      c.status = "Bitdi";
+    }
+  });
+
+  await Customer.updateOne(filter, { appointments: customer.appointments });
+
+  await customer.save();
+  customer = await Customer.findOne(filter);
+  console.log(customer.appointments);
+
+  // customer
+  //   .save()
+  //   .then(() =>
+  //     res.status(200).json({ message: "Succesfully added", data: customer })
+  //   )
+  //   .catch((e) => res.status(404).json({ message: e.message }));
 };
 
 export const setCustomer = async (req, res) => {
