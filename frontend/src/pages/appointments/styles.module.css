@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   height: 100vh;
   background-color: #fbf9f9ff;
 }
@@ -34,12 +34,6 @@
 
 .dashboardContainer {
   flex: 1;
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  background-color: #0194e9;
-
-  height: 50px;
 }
 
 .appointmentContainer {

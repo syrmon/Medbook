@@ -75,6 +75,10 @@ const Appointments = () => {
 
   return (
     <div className={`${styles.container}`}>
+      <div className={`${styles.bannerContainer}`}>
+        <Banner />
+      </div>
+      
       <div className={`${styles.appointmentContainer}`}>
         <div className={`${styles.statisticsContainer}`}>
           <div className={`${styles.statisticCount}`}>
@@ -112,9 +116,6 @@ const Appointments = () => {
               );
             })
           : isLoading && ""}
-      </div>
-      <div className={`${styles.bannerContainer}`}>
-        <Banner />
       </div>
 
       <div className={`${styles.dashboardContainer}`}>

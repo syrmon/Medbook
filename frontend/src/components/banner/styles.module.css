@@ -1,6 +1,5 @@
 .container {
   padding: 5px 20px;
-  background-color: #0194e9;
   border-bottom: 1px solid #0194e9;
   display: flex;
   justify-content: space-between;
@@ -8,13 +7,14 @@
   position: fixed;
   top: 0px;
   width: 100%;
+  background-color: #0194e9;
 }
 
 .productName {
   color: white;
 }
 
-.personOutline{
+.personOutline {
   box-shadow: 0px 0px 5px 0.5px white;
   border-radius: 100%;
   display: flex;

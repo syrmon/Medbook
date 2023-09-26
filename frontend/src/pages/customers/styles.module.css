@@ -2,11 +2,11 @@
   display: flex;
   height: 100vh;
   background-color: #fbf9f9ff;
+  flex-direction: column;
 }
 
 .statisticsContainer {
   color: #000;
-  margin-top: 60px;
   display: flex;
   width: 90%;
   justify-content: space-between;
@@ -18,12 +18,16 @@
     height: 86vh !important;
   }
 }
+
 .dashboardContainer {
+  flex: 1;
+
+}
+.bannerContainer {
   flex: 1;
 }
 
 .appointmentContainer {
-  flex: 11;
-  padding-bottom: 50px;
+  flex: 10;
   overflow: scroll;
 }
