@@ -60,7 +60,7 @@ const AppointmentBox = (props) => {
                 updateAppointment({
                   contactNumber: props.customerNumber,
                   date: data.appointment[0].date,
-                });
+                }).unwrap();;
                 window.location.reload(false)
               }}
             >
