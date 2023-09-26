@@ -3,15 +3,25 @@ import styles from "./styles.module.css";
 import { Sync, Undo, Done } from "@mui/icons-material";
 import { useUpdateAppointmentMutation } from "state/api";
 import UpdateAppointmentPanel from "components/updateAppointmentPanel/UpdateAppointmentPanel";
-
+import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 const AppointmentBox = (props) => {
   const [isChangeStatus, setIsChangeStatus] = useState(false);
   const [updateAppointment] = useUpdateAppointmentMutation();
   const [isDialogOpen, setDialogOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const updateDialogStatus = (status) => {
     setDialogOpen(status);
     setIsChangeStatus(false);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    window.location.reload(false);
   };
 
   const data = props.data;
@@ -54,6 +64,17 @@ const AppointmentBox = (props) => {
           >
             <Undo sx={{ fontSize: 25 }} style={{ color: "#0194e9" }} />
           </div>
+          <Dialog
+            open={open}
+            keepMounted
+            onClose={handleClose}
+            aria-describedby="alert-dialog-slide-description"
+          >
+            <DialogTitle>{"Növbə uğurla yeniləndi!"}</DialogTitle>
+            <DialogActions>
+              <Button onClick={handleClose}>Ok</Button>
+            </DialogActions>
+          </Dialog>
           <div className={`${styles.finishContainer}`}>
             <div
               className={`${styles.finish}`}
@@ -63,7 +84,7 @@ const AppointmentBox = (props) => {
                   contactNumber: props.customerNumber,
                   date: data.appointment[0].date,
                 }).unwrap();
-                window.location.reload(false)
+                handleClickOpen();
               }}
             >
               <Done sx={{ fontSize: 30 }} style={{ color: "#0194e9" }} />
