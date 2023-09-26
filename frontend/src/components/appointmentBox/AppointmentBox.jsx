@@ -16,6 +16,10 @@ const AppointmentBox = (props) => {
   };
 
   const handleClickOpen = () => {
+    updateAppointment({
+      contactNumber: props.customerNumber,
+      date: data.appointment[0].date,
+    }).unwrap();
     setOpen(true);
   };
 
@@ -79,11 +83,6 @@ const AppointmentBox = (props) => {
             <div
               className={`${styles.finish}`}
               onClick={() => {
-                setIsChangeStatus(false);
-                updateAppointment({
-                  contactNumber: props.customerNumber,
-                  date: data.appointment[0].date,
-                }).unwrap();
                 handleClickOpen();
               }}
             >
