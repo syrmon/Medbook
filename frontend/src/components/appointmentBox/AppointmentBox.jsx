@@ -22,7 +22,9 @@ const AppointmentBox = (props) => {
           className={`${styles.appointmentBox} ${
             data.appointment[0].status === "Bitdi"
               ? styles.skipped
-              :  data.appointment[0].status === "Changed" ? styles.changed : styles.upcoming
+              : data.appointment[0].status === "Changed"
+              ? styles.changed
+              : styles.upcoming
           }`}
           onClick={() => {
             setIsChangeStatus(true);
@@ -60,8 +62,9 @@ const AppointmentBox = (props) => {
                 updateAppointment({
                   contactNumber: props.customerNumber,
                   date: data.appointment[0].date,
-                }).unwrap();;
-                window.location.reload(false)
+                })
+                  .unwrap()
+                  .then(() => window.location.reload(false));
               }}
             >
               <Done sx={{ fontSize: 30 }} style={{ color: "#0194e9" }} />

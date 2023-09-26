@@ -54,7 +54,6 @@ const UpdateAppointmentPanel = (props) => {
     }).unwrap();
 
     handleClickOpen();
-    window.location.reload(false);
   };
 
   const handleClickOpen = () => {
@@ -80,7 +79,10 @@ const UpdateAppointmentPanel = (props) => {
       </Dialog>
       <div className={`${styles.closeContainer}`}>
         <div
-          onClick={() => props.status(false)}
+          onClick={() => {
+            props.status(false);
+            window.location.reload(false);
+          }}
           className={`${styles.closeButton}`}
         >
           X
