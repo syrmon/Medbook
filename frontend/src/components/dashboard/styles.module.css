@@ -80,10 +80,6 @@
 
 /* Mobile Responsive*/
 .container {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  background-color: #0194e9;
   display: flex;
   justify-content: center;
   height: 50px;

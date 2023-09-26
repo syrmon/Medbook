@@ -113,7 +113,10 @@ const Appointments = () => {
             })
           : isLoading && ""}
       </div>
-      <Banner />
+      <div className={`${styles.bannerContainer}`}>
+        <Banner />
+      </div>
+
       <div className={`${styles.dashboardContainer}`}>
         <Dashboard />
       </div>

@@ -31,6 +31,8 @@ const Dashboard = () => {
 
   return (
     <div className={`${styles.container}`}>
+      {eventActive && <AddAppointmentPanel status={updateEventActive} />}
+      {customerActive && <AddCustomerPanel status={updateCustomerActive} />}
       <div
         className={`${styles.serviceContainer} ${
           window.location.pathname === "/receipt" && styles.active
@@ -96,8 +98,6 @@ const Dashboard = () => {
             </div>
           </div>
         )}
-        {eventActive && <AddAppointmentPanel status={updateEventActive} />}
-        {customerActive && <AddCustomerPanel status={updateCustomerActive} />}
       </div>
       <div
         className={`${styles.serviceContainer} ${
