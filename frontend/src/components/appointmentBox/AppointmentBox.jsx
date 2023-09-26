@@ -61,6 +61,7 @@ const AppointmentBox = (props) => {
                   contactNumber: props.customerNumber,
                   date: data.appointment[0].date,
                 });
+                window.location.reload(false)
               }}
             >
               <Done sx={{ fontSize: 30 }} style={{ color: "#0194e9" }} />
