@@ -75,9 +75,6 @@ const Appointments = () => {
 
   return (
     <div className={`${styles.container}`}>
-      <div className={`${styles.dashboardContainer}`}>
-        <Dashboard />
-      </div>
       <div className={`${styles.appointmentContainer}`}>
         <div className={`${styles.statisticsContainer}`}>
           <div className={`${styles.statisticCount}`}>
@@ -117,6 +114,9 @@ const Appointments = () => {
           : isLoading && ""}
       </div>
       <Banner />
+      <div className={`${styles.dashboardContainer}`}>
+        <Dashboard />
+      </div>
     </div>
   );
 };
