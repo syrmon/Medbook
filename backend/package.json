@@ -8,7 +8,7 @@
     "test": "echo \"Error : not test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build": "npm run build"
+    "build": "npm i && npm run build"
   },
   "keywords": [],
   "author": "serkerof",
