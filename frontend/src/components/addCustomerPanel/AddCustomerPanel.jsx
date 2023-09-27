@@ -18,7 +18,8 @@ const AddCustomerPanel = (props) => {
 
   const [addCustomer] = useAddCustomerMutation();
 
-  const submitForm = () => {
+  const submitForm = (event) => {
+    event.preventDefault();
     addCustomer({
       name,
       surname,
@@ -42,7 +43,7 @@ const AddCustomerPanel = (props) => {
   };
 
   return (
-    <div className={`${styles.container}`}>
+    <form className={`${styles.container}`} onSubmit={submitForm}>
       <Dialog
         open={open}
         keepMounted
@@ -70,12 +71,14 @@ const AddCustomerPanel = (props) => {
             variant="standard"
             style={{ marginRight: "30px" }}
             onChange={(e) => setName(e.target.value)}
+            required
           />
           <TextField
             id="surname"
             label="Soyad"
             variant="standard"
             onChange={(e) => setSurname(e.target.value)}
+            required
           />
         </div>
       </div>
@@ -87,19 +90,23 @@ const AddCustomerPanel = (props) => {
             variant="standard"
             style={{ marginRight: "30px" }}
             onChange={(e) => setContactNumber(e.target.value)}
+            required
           />
           <TextField
             id="birthDate"
             label="Doğum Tarixi"
             variant="standard"
             onChange={(e) => setBirthDate(e.target.value)}
+            required
           />
         </div>
       </div>
-      <div className={`${styles.addContainer}`} onClick={submitForm}>
-        <Button variant="contained">Əlavə et</Button>
+      <div className={`${styles.addContainer}`}>
+        <Button variant="contained" type="submit">
+          Əlavə et
+        </Button>
       </div>
-    </div>
+    </form>
   );
 };
 export default AddCustomerPanel;

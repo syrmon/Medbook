@@ -68,7 +68,10 @@ const Dashboard = () => {
           >
             <div
               className={`${styles.addButtons}`}
-              onClick={() => setCustomerActive(true)}
+              onClick={() => {
+                setCustomerActive(true);
+                setAddNewData(!addNewData);
+              }}
             >
               <Person
                 sx={{ fontSize: 20 }}

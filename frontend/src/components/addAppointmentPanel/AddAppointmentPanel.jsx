@@ -31,7 +31,7 @@ const AddAppointmentPanel = (props) => {
     sestCustomerNumber(event.target.value);
   };
 
-  const submitForm = () => {
+  const submitForm = (event) => {
     const month = (date.$M + 1).toString();
     const time = (
       customerTime.$H.toString().length > 1
@@ -58,6 +58,7 @@ const AddAppointmentPanel = (props) => {
     }).unwrap();
 
     handleClickOpen();
+    event.preventDefault();
   };
 
   const handleClickOpen = () => {
@@ -72,7 +73,7 @@ const AddAppointmentPanel = (props) => {
   };
 
   return (
-    <div className={`${styles.container}`}>
+    <form className={`${styles.container}`} onSubmit={submitForm}>
       <Dialog
         open={open}
         keepMounted
@@ -101,6 +102,7 @@ const AddAppointmentPanel = (props) => {
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
             value={customerNumber}
+            required
             onChange={handleChange}
             label="Müştəri"
           >
@@ -147,13 +149,15 @@ const AddAppointmentPanel = (props) => {
           value={customerDesc}
           fullWidth
           label="Şikayət"
+          required
         ></TextField>
       </div>
-
-      <div className={`${styles.addContainer}`} onClick={submitForm}>
-        <Button variant="contained">Əlavə et</Button>
+      <div className={`${styles.addContainer}`}>
+        <Button type="submit" variant="contained">
+          Əlavə et
+        </Button>
       </div>
-    </div>
+    </form>
   );
 };
 
