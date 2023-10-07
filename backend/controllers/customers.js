@@ -59,8 +59,6 @@ export const getAppointments = async (req, res) => {
         }
         return 0;
       });
-
-    console.log(appointmentsArray);
     res.status(200).json(appointmentsArray);
   } catch (error) {
     res.status(404).json({ message: error.message });
