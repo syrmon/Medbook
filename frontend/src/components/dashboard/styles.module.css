@@ -83,8 +83,6 @@
   display: flex;
   justify-content: center;
   height: 50px;
-  position: fixed;
-  bottom: 0px;
   background-color: #0194e9;
   width: 100%;
 }

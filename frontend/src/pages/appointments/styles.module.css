@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100vh;
   background-color: #fbf9f9ff;
+  padding-top: 10px;
 }
 @supports (-webkit-touch-callout: none) {
   .container {
@@ -28,15 +29,3 @@
   margin-left: 20px;
 }
 
-.bannerContainer {
-  flex: 1;
-}
-
-.dashboardContainer {
-  flex: 1;
-}
-
-.appointmentContainer {
-  flex: 10;
-  overflow: scroll;
-}

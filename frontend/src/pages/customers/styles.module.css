@@ -3,6 +3,7 @@
   height: 100vh;
   background-color: #fbf9f9ff;
   flex-direction: column;
+  padding-top: 10px;
 }
 
 .statisticsContainer {
@@ -17,17 +18,4 @@
   .container {
     height: 86vh !important;
   }
-}
-
-.dashboardContainer {
-  flex: 1;
-
-}
-.bannerContainer {
-  flex: 1;
-}
-
-.appointmentContainer {
-  flex: 10;
-  overflow: scroll;
 }

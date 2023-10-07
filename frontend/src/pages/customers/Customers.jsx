@@ -8,9 +8,6 @@ const Customers = () => {
   const { data, isLoading } = useGetCustomersQuery();
   return (
     <div className={`${styles.container}`}>
-      <div className={`${styles.bannerContainer}`}>
-        <Banner />
-      </div>
       <div className={`${styles.appointmentContainer}`}>
         <div className={`${styles.statisticsContainer}`}>
           <h3>Müştəri sayı: </h3>{" "}
@@ -26,9 +23,6 @@ const Customers = () => {
             })
           : isLoading && ""}
       </div>{" "}
-      <div className={`${styles.dashboardContainer}`}>
-        <Dashboard />
-      </div>
     </div>
   );
 };
