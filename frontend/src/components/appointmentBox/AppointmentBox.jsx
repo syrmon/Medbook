@@ -18,7 +18,7 @@ const AppointmentBox = (props) => {
   const handleClickOpen = () => {
     updateAppointment({
       contactNumber: props.customerNumber,
-      date: data.appointment[0].date,
+      date: data.appointment.date,
     }).unwrap();
     setOpen(true);
   };
@@ -34,9 +34,9 @@ const AppointmentBox = (props) => {
       {!isChangeStatus ? (
         <div
           className={`${styles.appointmentBox} ${
-            data.appointment[0].status === "Bitdi"
+            data.appointment.status === "Bitdi"
               ? styles.skipped
-              : data.appointment[0].status === "Changed"
+              : data.appointment.status === "Changed"
               ? styles.changed
               : styles.upcoming
           }`}
@@ -48,12 +48,12 @@ const AppointmentBox = (props) => {
             <h2 className={`${styles.name}`}>
               {data.name} {data.surname}
             </h2>
-            <h3 className={`${styles.time}`}>{data.appointment[0].time}</h3>
+            <h3 className={`${styles.time}`}>{data.appointment.time}</h3>
           </div>
           <div className={`${styles.info}`}>
             <figure>
               <blockquote>
-                <p className={`${styles.desc}`}>{data.appointment[0].desc}</p>
+                <p className={`${styles.desc}`}>{data.appointment.desc}</p>
               </blockquote>
             </figure>
           </div>

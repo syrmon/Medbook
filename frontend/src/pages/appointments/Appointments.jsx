@@ -19,59 +19,6 @@ const Appointments = () => {
     .concat(date.getFullYear().toString());
   const [selectedDate, setSelectedDate] = useState(todaysDate);
   const { data, isLoading } = useGetAppointmentsQuery(selectedDate);
-  const myData = [];
-
-  const appointmentCountIncreaser = () => {
-    let appointmentCount = 0;
-
-    for (let i = 0; i < myData.length; i++) {
-      if (myData[i] !== false) {
-        appointmentCount++;
-      }
-    }
-    return appointmentCount;
-  };
-
-  const updateArray = () => {
-    for (let i = 0; i < data.length; i++) {
-      data.map((a) => {
-        return myData.length !== data.length && myData.push(a);
-      });
-    }
-    sortData();
-  };
-
-  const sortData = () => {
-    myData.sort(function compFunc(a, b) {
-      if (a === false || a === undefined || b === false || b === undefined) {
-        return 0;
-      }
-      const appointmentA = a.appointment[0].time;
-      const appointmentB = b.appointment[0].time;
-
-      const timeFirst = Number(appointmentA.substring(0, 2));
-      const timeSecond = Number(appointmentA.substring(3, 5));
-
-      const timeBFirst = Number(appointmentB.substring(0, 2));
-      const timeBSecond = Number(appointmentB.substring(3, 5));
-
-      if (timeFirst < timeBFirst) {
-        return -1;
-      }
-      if (timeFirst > timeBFirst) {
-        return 1;
-      }
-      if (timeFirst === timeBFirst && timeSecond < timeBSecond) {
-        return -1;
-      }
-      if (timeFirst === timeBFirst && timeSecond > timeBSecond) {
-        return 1;
-      }
-      return 0;
-    });
-  };
-
-  data !== undefined && myData.length < 1 && updateArray();
 
   return (
     <div className={`${styles.container}`}>
@@ -83,7 +30,7 @@ const Appointments = () => {
         <div className={`${styles.statisticsContainer}`}>
           <div className={`${styles.statisticCount}`}>
             <h3>Randevu sayı: </h3> &nbsp;&nbsp;
-            <h3>{appointmentCountIncreaser()}</h3>
+            <h3>{data && data.length}</h3>
           </div>
           <div className={`${styles.datePicker}`}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -108,8 +55,8 @@ const Appointments = () => {
             </LocalizationProvider>
           </div>
         </div>
-        {myData.length > 0
-          ? myData.map((appointment) => {
+        {data && data.length > 0
+          ? data.map((appointment) => {
               return (
                 appointment !== false && (
                   <AppointmentBox

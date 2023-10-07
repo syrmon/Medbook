@@ -14,23 +14,54 @@ export const getAppointments = async (req, res) => {
   try {
     const selectedDate = req.query.date;
     const customer = await Customer.find();
+    const appointmentsArray = [];
 
-    const appointments = customer.map((c) => {
-      const appointment = c.appointments.filter((a) => {
-        return a.date === selectedDate;
+    customer.forEach((c) => {
+      let appointment;
+      c.appointments.forEach((a, index, arr) => {
+        if (a.date === selectedDate) {
+          appointment = arr[index];
+        }
       });
 
-      return (
-        appointment.length > 0 && {
+      if (appointment !== undefined) {
+        appointmentsArray.push({
           contactNumber: c.contactNumber,
           name: c.name,
           surname: c.surname,
           appointment: appointment,
-        }
-      );
+        });
+      }
     });
 
-    res.status(200).json(appointments);
+    appointmentsArray.length > 1 &&
+      appointmentsArray.sort(function compFunc(a, b) {
+        const appointmentA = a.appointment.time;
+        const appointmentB = b.appointment.time;
+
+        const timeFirst = Number(appointmentA.substring(0, 2));
+        const timeSecond = Number(appointmentA.substring(3, 5));
+
+        const timeBFirst = Number(appointmentB.substring(0, 2));
+        const timeBSecond = Number(appointmentB.substring(3, 5));
+
+        if (timeFirst < timeBFirst) {
+          return -1;
+        }
+        if (timeFirst > timeBFirst) {
+          return 1;
+        }
+        if (timeFirst === timeBFirst && timeSecond < timeBSecond) {
+          return -1;
+        }
+        if (timeFirst === timeBFirst && timeSecond > timeBSecond) {
+          return 1;
+        }
+        return 0;
+      });
+
+    console.log(appointmentsArray);
+    res.status(200).json(appointmentsArray);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
