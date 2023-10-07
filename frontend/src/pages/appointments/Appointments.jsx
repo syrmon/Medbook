@@ -10,12 +10,12 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const Appointments = () => {
   const date = new Date();
-  const month = (date.getMonth() + 1).toString();
+  const month = (date.getMonth() + 1).toString().concat(".");
   const todaysDate = date
     .getDate()
     .toString()
     .concat(".")
-    .concat(month.length > 1 ? month : "0" + month + ".")
+    .concat(month.length > 1 ? month : "0" + month)
     .concat(date.getFullYear().toString());
   const [selectedDate, setSelectedDate] = useState(todaysDate);
   const { data, isLoading } = useGetAppointmentsQuery(selectedDate);
@@ -78,7 +78,7 @@ const Appointments = () => {
       <div className={`${styles.bannerContainer}`}>
         <Banner />
       </div>
-      
+
       <div className={`${styles.appointmentContainer}`}>
         <div className={`${styles.statisticsContainer}`}>
           <div className={`${styles.statisticCount}`}>
@@ -92,10 +92,15 @@ const Appointments = () => {
                 format="DD-MM-YYYY"
                 slotProps={{ textField: { placeholder: todaysDate } }}
                 onChange={(date) => {
+                  const selectedMonth = (date.$M + 1).toString().concat(".");
                   const selectedDate = date.$D
                     .toString()
                     .concat(".")
-                    .concat(month.length > 1 ? month : "0" + month + ".")
+                    .concat(
+                      selectedMonth.length > 1
+                        ? selectedMonth
+                        : "0" + selectedMonth
+                    )
                     .concat(date.$y.toString());
                   setSelectedDate(selectedDate);
                 }}

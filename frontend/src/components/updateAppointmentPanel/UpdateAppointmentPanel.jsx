@@ -20,7 +20,7 @@ const UpdateAppointmentPanel = (props) => {
   const [updateAppointment] = useUpdateAppointmentMutation();
 
   const submitForm = () => {
-    const month = (date.$M + 1).toString();
+    const month = (date.$M + 1).toString().concat(".");
     const time = (
       customerTime.$H.toString().length > 1
         ? customerTime.$H.toString()
@@ -33,7 +33,7 @@ const UpdateAppointmentPanel = (props) => {
     );
 
     const currentDate = new Date();
-    const currentMonth = (currentDate.getMonth() + 1).toString();
+    const currentMonth = (currentDate.getMonth() + 1).toString().concat(".");
     const todaysDate = currentDate
       .getDate()
       .toString()
@@ -44,7 +44,7 @@ const UpdateAppointmentPanel = (props) => {
     const selectedDate = date.$D
       .toString()
       .concat(".")
-      .concat(month.length > 1 ? month : "0" + month + ".")
+      .concat(month.length > 1 ? month : "0" + month)
       .concat(date.$y.toString());
 
     updateAppointment({
