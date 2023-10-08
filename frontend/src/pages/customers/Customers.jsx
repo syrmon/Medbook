@@ -1,8 +1,6 @@
 import CustomerBox from "components/customerBox/CustomerBox";
 import styles from "./styles.module.css";
 import { useGetCustomersQuery } from "state/api";
-import Dashboard from "components/dashboard/Dashboard";
-import Banner from "components/banner/Banner";
 
 const Customers = () => {
   const { data, isLoading } = useGetCustomersQuery();
