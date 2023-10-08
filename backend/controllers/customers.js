@@ -93,7 +93,6 @@ export const updateAppointment = async (req, res) => {
   await Customer.updateOne(filter, { appointments: customer.appointments });
 
   await customer.save();
-  customer = await Customer.findOne(filter);
 };
 
 export const setCustomer = async (req, res) => {
