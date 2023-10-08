@@ -1,7 +1,8 @@
 .container {
   display: grid;
   grid-template-columns: auto ;
-  height: 100vh;
+  height: 93.5vh;
+  overflow: hidden;
 }
 
 @supports (-webkit-touch-callout: none) {
@@ -30,5 +31,4 @@
   grid-column-start: 1;
   grid-column-end: 4;
   overflow: scroll;
-  height: 100%;
 }
