@@ -9,6 +9,7 @@ const AppointmentBox = (props) => {
   const [updateAppointment] = useUpdateAppointmentMutation();
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [open, setOpen] = useState(false);
+  const data = props.data;
 
   const updateDialogStatus = (status) => {
     setDialogOpen(status);
@@ -16,6 +17,7 @@ const AppointmentBox = (props) => {
   };
 
   const handleClickOpen = () => {
+    console.log(data.appointment.date)
     updateAppointment({
       contactNumber: props.customerNumber,
       date: data.appointment.date,
@@ -28,7 +30,6 @@ const AppointmentBox = (props) => {
     window.location.reload(false);
   };
 
-  const data = props.data;
   return (
     <>
       {!isChangeStatus ? (

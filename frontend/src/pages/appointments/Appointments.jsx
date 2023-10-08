@@ -2,21 +2,14 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import AppointmentBox from "components/appointmentBox/AppointmentBox";
 import { useGetAppointmentsQuery } from "state/api";
-import Dashboard from "components/dashboard/Dashboard";
-import Banner from "components/banner/Banner";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { dateOptimizer, getCurrentDate } from "components/tools/timeOptimizer";
 
 const Appointments = () => {
-  const date = new Date();
-  const month = (date.getMonth() + 1).toString().concat(".");
-  const todaysDate = date
-    .getDate()
-    .toString()
-    .concat(".")
-    .concat(month.length > 1 ? month : "0" + month)
-    .concat(date.getFullYear().toString());
+  const todaysDate = getCurrentDate();
+
   const [selectedDate, setSelectedDate] = useState(todaysDate);
   const { data, isLoading } = useGetAppointmentsQuery(selectedDate);
 
@@ -35,16 +28,7 @@ const Appointments = () => {
                 format="DD-MM-YYYY"
                 slotProps={{ textField: { placeholder: todaysDate } }}
                 onChange={(date) => {
-                  const selectedMonth = (date.$M + 1).toString().concat(".");
-                  const selectedDate = date.$D
-                    .toString()
-                    .concat(".")
-                    .concat(
-                      selectedMonth.length > 1
-                        ? selectedMonth
-                        : "0" + selectedMonth
-                    )
-                    .concat(date.$y.toString());
+                  const selectedDate = dateOptimizer(date);
                   setSelectedDate(selectedDate);
                 }}
               />

@@ -1,54 +1,26 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import {
-  useAddAppointmentMutation,
-  useGetCustomersQuery,
-  useUpdateAppointmentMutation,
-} from "state/api";
+import { useUpdateAppointmentMutation } from "state/api";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import { TimePicker } from "@mui/x-date-pickers";
+import { timeOptimizer, dateOptimizer } from "components/tools/timeOptimizer";
 
 const UpdateAppointmentPanel = (props) => {
   const customer = props.customer;
   const [customerTime, setTime] = useState("");
   const [date, setDate] = useState();
   const [open, setOpen] = useState(false);
-
   const [updateAppointment] = useUpdateAppointmentMutation();
 
   const submitForm = () => {
-    const month = (date.$M + 1).toString().concat(".");
-    const time = (
-      customerTime.$H.toString().length > 1
-        ? customerTime.$H.toString()
-        : "0" + customerTime.$H.toString()
-    ).concat(
-      ":" +
-        (customerTime.$m.toString().length > 1
-          ? customerTime.$m.toString()
-          : "0" + customerTime.$m.toString())
-    );
-
-    const currentDate = new Date();
-    const currentMonth = (currentDate.getMonth() + 1).toString().concat(".");
-    const todaysDate = currentDate
-      .getDate()
-      .toString()
-      .concat(".")
-      .concat(currentMonth.length > 1 ? currentMonth : "0" + currentMonth + ".")
-      .concat(currentDate.getFullYear().toString());
-
-    const selectedDate = date.$D
-      .toString()
-      .concat(".")
-      .concat(month.length > 1 ? month : "0" + month)
-      .concat(date.$y.toString());
-
+    const time = timeOptimizer(customerTime);
+    const selectedDate = dateOptimizer(date);
+    console.log(time, selectedDate);
     updateAppointment({
-      date: todaysDate,
+      date: customer.appointment.date,
       newDate: { date: selectedDate, time: time },
       contactNumber: customer.contactNumber,
     }).unwrap();
