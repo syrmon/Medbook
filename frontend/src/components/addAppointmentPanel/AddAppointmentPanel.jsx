@@ -16,6 +16,7 @@ import {
   TextField,
 } from "@mui/material";
 import { TimePicker } from "@mui/x-date-pickers";
+import { dateOptimizer, timeOptimizer } from "components/tools/timeOptimizer";
 
 const AddAppointmentPanel = (props) => {
   const [customerNumber, sestCustomerNumber] = useState("");
@@ -32,23 +33,8 @@ const AddAppointmentPanel = (props) => {
   };
 
   const submitForm = (event) => {
-    const month = (date.$M + 1).toString().concat(".");
-    const time = (
-      customerTime.$H.toString().length > 1
-        ? customerTime.$H.toString()
-        : "0" + customerTime.$H.toString()
-    ).concat(
-      ":" +
-        (customerTime.$m.toString().length > 1
-          ? customerTime.$m.toString()
-          : "0" + customerTime.$m.toString())
-    );
-
-    const selectedDate = date.$D
-      .toString()
-      .concat(".")
-      .concat(month.length > 1 ? month : "0" + month)
-      .concat(date.$y.toString());
+    const time = timeOptimizer(customerTime);
+    const selectedDate = dateOptimizer(date);
 
     addCustomer({
       customer: customer,
