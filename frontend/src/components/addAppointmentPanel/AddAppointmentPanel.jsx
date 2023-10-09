@@ -27,7 +27,7 @@ const AddAppointmentPanel = (props) => {
   const [date, setDate] = useState();
 
   const customers = useGetCustomersQuery().data;
-  const [addCustomer] = useAddAppointmentMutation();
+  const [addAppointment] = useAddAppointmentMutation();
   const handleChange = (event) => {
     sestCustomerNumber(event.target.value);
   };
@@ -36,7 +36,7 @@ const AddAppointmentPanel = (props) => {
     const time = timeOptimizer(customerTime);
     const selectedDate = dateOptimizer(date);
 
-    addCustomer({
+    addAppointment({
       customer: customer,
       date: selectedDate,
       time: time,
