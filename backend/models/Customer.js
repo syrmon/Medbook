@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const CustomerSchema = new mongoose.Schema({
   name: String,
   surname: String,
@@ -7,7 +8,7 @@ const CustomerSchema = new mongoose.Schema({
   //Depbt
   appointments: Array,
   contactNumber: String,
-  //receipes: Array,
+  receipes: Array,
 });
 
 const Customer = mongoose.model("Customer", CustomerSchema);

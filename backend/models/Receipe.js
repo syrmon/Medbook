@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
 const ReceipeSchema = new mongoose.Schema({
-  amount: Double,
+  amount: Number,
   paymentMethod: String,
   date: String,
+  time: String,
   //Depbt
   workDescription: String,
-  outcome: double,
+  outcome: Number,
   outcomeDetails: String,
 });
 
