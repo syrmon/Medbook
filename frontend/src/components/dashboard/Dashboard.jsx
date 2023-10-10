@@ -11,11 +11,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AddAppointmentPanel from "components/addAppointmentPanel/AddAppointmentPanel";
 import AddCustomerPanel from "components/addCustomerPanel/AddCustomerPanel";
+import AddReceipePanel from "components/addReceipePanel/AddReceipePanel";
 
 const Dashboard = () => {
   const [addNewData, setAddNewData] = useState(false);
   const [eventActive, setEventActive] = useState(false);
   const [customerActive, setCustomerActive] = useState(false);
+  const [receipeActive, setReceipeActive] = useState(false);
   const navigate = useNavigate();
 
   const updateEventActive = (status) => {
@@ -29,15 +31,22 @@ const Dashboard = () => {
     setCustomerActive(status);
   };
 
+  const updateReceipeActive = (status) => {
+    setReceipeActive(status);
+  };
+
   return (
     <div className={`${styles.container}`}>
       {eventActive && <AddAppointmentPanel status={updateEventActive} />}
       {customerActive && <AddCustomerPanel status={updateCustomerActive} />}
+      {receipeActive && <AddReceipePanel status={updateReceipeActive} />}
       <div
         className={`${styles.serviceContainer} ${
-          window.location.pathname === "/receipt" && styles.active
+          window.location.pathname === "/receipes" && styles.active
         }`}
-        onClick={() => {}}
+        onClick={() => {
+          navigate("/receipes");
+        }}
       >
         <Receipt sx={{ fontSize: 30 }} style={{ color: "#fff" }} />
       </div>
@@ -92,7 +101,13 @@ const Dashboard = () => {
               />
               <h4>Randevu</h4>
             </div>
-            <div className={`${styles.addButtons}`}>
+            <div
+              className={`${styles.addButtons}`}
+              onClick={() => {
+                setReceipeActive(true);
+                setAddNewData(false);
+              }}
+            >
               <Receipt
                 sx={{ fontSize: 20 }}
                 style={{ color: "#fff", marginRight: "15px" }}

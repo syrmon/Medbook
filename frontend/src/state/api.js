@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_SERVER_URL }),
   reducerPath: "adminApi",
-  tagTypes: ["User", "Appointments", "Customers", "Recipes"],
+  tagTypes: ["User", "Appointments", "Customers", "Receipes"],
   endpoints: (build) => ({
     getAppointments: build.query({
       query: (payload) => {
@@ -28,6 +28,25 @@ export const api = createApi({
         };
       },
       invalidatesTags: ["Customers"],
+    }),
+    addReceipe: build.mutation({
+      query(payload) {
+        return {
+          url: "/customer/receipe/",
+          method: "POST",
+          body: payload,
+        };
+      },
+      invalidatesTags: ["Customers"],
+    }),
+    getReceipes: build.query({
+      query: (payload) => {
+        return {
+          url: "/customer/receipes/",
+          params: { date: payload },
+        };
+      },
+      providesTags: ["Appointments"],
     }),
     addCustomer: build.mutation({
       query(payload) {
@@ -54,8 +73,10 @@ export const api = createApi({
 
 export const {
   useGetAppointmentsQuery,
+  useGetReceipesQuery,
   useGetCustomersQuery,
   useAddAppointmentMutation,
   useAddCustomerMutation,
   useUpdateAppointmentMutation,
+  useAddReceipeMutation,
 } = api;
