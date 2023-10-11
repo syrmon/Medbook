@@ -21,8 +21,11 @@
   justify-content: space-between;
   align-items: center;
   margin: 10px 0px;
+  border-bottom: 1px dotted gray;
+  padding-bottom: 10px;
 }
 .desc {
+  margin-right: 10px;
 }
 .status {
   background-color: red;
@@ -42,4 +45,14 @@
 }
 .amount {
   font-weight: 550 !important;
+  width: 60%;
+}
+
+.outcome {
+  color: red;
+  font-weight: 550 !important;
+}
+
+.income{
+  color: blue;
 }
