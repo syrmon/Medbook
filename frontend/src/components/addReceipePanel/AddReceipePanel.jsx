@@ -166,7 +166,7 @@ const AddReceipePanel = (props) => {
             label="Məbləğ"
             variant="standard"
             style={{ marginRight: "30px", width: "100%" }}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => setAmount(Number(e.target.value))}
             required
           />
           <TextField
@@ -188,7 +188,7 @@ const AddReceipePanel = (props) => {
             label="Xərc Məbləği"
             variant="standard"
             style={{ marginRight: "30px", width: "100%" }}
-            onChange={(e) => setOutcome(e.target.value)}
+            onChange={(e) => setOutcome(Number(e.target.value))}
           />
           <TextField
             variant="standard"

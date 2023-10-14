@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fbf9f9ff;
+  padding-top: 10px;
+}
+@supports (-webkit-touch-callout: none) {
+  .container {
+    height: 86vh !important;
+  }
+}
+
+.selectorContainer {
+  display: flex;
+  justify-content: space-between ;
+}
+
+.outcome{
+  color: red;
+}
+
+.detailsContainer{
+  height: 300px;
+  width: 300px;
+}

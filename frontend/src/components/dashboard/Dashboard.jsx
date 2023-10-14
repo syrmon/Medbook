@@ -121,6 +121,9 @@ const Dashboard = () => {
         className={`${styles.serviceContainer} ${
           window.location.pathname === "/statistics" && styles.active
         }`}
+        onClick={() => {
+          navigate("/statistics");
+        }}
       >
         <BarChart sx={{ fontSize: 30 }} style={{ color: "#fff" }} />
       </div>

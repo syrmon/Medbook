@@ -40,10 +40,7 @@ const Receipes = () => {
           ? data.map((receipe) => {
               return (
                 receipe !== false && (
-                  <ReceipeBox
-                    data={receipe}
-                    key={receipe.name}
-                  />
+                  <ReceipeBox data={receipe} key={receipe.name} />
                 )
               );
             })

@@ -3,12 +3,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_SERVER_URL }),
   reducerPath: "adminApi",
-  tagTypes: ["User", "Appointments", "Customers", "Receipes"],
+  tagTypes: ["User", "Appointments", "Customers", "Receipes", "Statistics"],
   endpoints: (build) => ({
     getAppointments: build.query({
       query: (payload) => {
         return {
-          url: "/customer/appointments/",
+          url: "/appointments/",
           params: { date: payload },
         };
       },
@@ -22,7 +22,7 @@ export const api = createApi({
     addAppointment: build.mutation({
       query(payload) {
         return {
-          url: "/customer/appointments/",
+          url: "/appointments/",
           method: "POST",
           body: payload,
         };
@@ -32,7 +32,7 @@ export const api = createApi({
     addReceipe: build.mutation({
       query(payload) {
         return {
-          url: "/customer/receipe/",
+          url: "/receipes/",
           method: "POST",
           body: payload,
         };
@@ -42,11 +42,20 @@ export const api = createApi({
     getReceipes: build.query({
       query: (payload) => {
         return {
-          url: "/customer/receipes/",
+          url: "/receipes/",
           params: { date: payload },
         };
       },
-      providesTags: ["Appointments"],
+      providesTags: ["Receipes"],
+    }),
+    getStatistics: build.query({
+      query: (payload) => {
+        return {
+          url: "/statistics/",
+          params: { date: payload.date, filter: payload.filter },
+        };
+      },
+      providesTags: ["Statistics"],
     }),
     addCustomer: build.mutation({
       query(payload) {
@@ -61,7 +70,7 @@ export const api = createApi({
     updateAppointment: build.mutation({
       query(payload) {
         return {
-          url: "/customer/appointments/",
+          url: "/appointments/",
           method: "PUT",
           body: payload,
         };
@@ -73,6 +82,7 @@ export const api = createApi({
 
 export const {
   useGetAppointmentsQuery,
+  useGetStatisticsQuery,
   useGetReceipesQuery,
   useGetCustomersQuery,
   useAddAppointmentMutation,
